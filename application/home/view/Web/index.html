@@ -59,6 +59,11 @@
 
                                     </h4>
                                     <p class="posts-txt" title="Posts from Channel"><i class="fa fa-credit-card-alt"></i><a href="{:url('category', ['category' => $item['category']])}">{$item.category}</a></p>
+                                    <p class="posts-txt" title="Posts from Channel">
+                                        <i class="fa fa-eye"></i>{$item.view}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-download"></i>{$item.download}
+                                    </p>
                                     <p class="posts-txt" title="Posts from Channel"><i class="fa fa-tag"></i>
                                         {volist name="item.tags" id="tag"}
                                         <a href="{:url('index', ['tags' => $tag['tag']])}">{$tag.tag}</a>

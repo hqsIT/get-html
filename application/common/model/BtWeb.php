@@ -30,7 +30,16 @@ class BtWeb extends Model
         $head = $info['is_https'] ? 'https://' : 'http://';
         $page = 1;
         $host = $head . $info['host'] . str_replace(['{$keyword}', '{$page}'], [$keyword, $page], $info['search_rule']);
+        //下载量加一操作
+        $WebContent = new WebContent();
+        $WebContent->downloadIncByAlias($keyword);
+        $this->downloadInc($id);
 
         return $host;
+    }
+
+    public function downloadInc($id)
+    {
+        $this->where('id', $id)->setInc('download');
     }
 }

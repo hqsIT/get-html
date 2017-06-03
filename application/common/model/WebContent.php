@@ -65,4 +65,26 @@ class WebContent extends Model
             $WebContentTag->isUpdate(false)->data($data)->save();
         }
     }
+
+    /**
+     * 浏览量加一
+     * @param $id
+     * @author klinson <klinson@163.com>
+     * @throws \think\Exception
+     */
+    public function viewInc($id)
+    {
+        $this->where('id', $id)->setInc('view');
+    }
+
+    /**
+     * 浏览量加一
+     * @param $alias
+     * @author klinson <klinson@163.com>
+     * @throws \think\Exception
+     */
+    public function downloadIncByAlias($alias)
+    {
+        $this->where('alias', $alias)->setInc('download');
+    }
 }

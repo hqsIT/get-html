@@ -73,4 +73,15 @@ class WebCategory extends Model
         ];
         return $this->alias('category')->where('category.id', $id)->join($join)->distinct('tag.id')->field('tag.id, tag.title')->select();
     }
+
+    /**
+     * 浏览量加一
+     * @param $id
+     * @author klinson <klinson@163.com>
+     * @throws \think\Exception
+     */
+    public function viewInc($id)
+    {
+        $this->where('id', $id)->setInc('view');
+    }
 }

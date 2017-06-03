@@ -52,13 +52,15 @@
                             <!-- PAGE INFO -->
                             <div class="page-info">
                                 <div class="metabox">
-                                    <span class="meta-i"><i class="fa fa-amazon" aria-hidden="true"></i>作者：{$detail.category}</span>
+                                    <span class="meta-i"><i class="fa fa-amazon" aria-hidden="true"></i>作者：<a href="{:url('category', ['category' => $detail['category']])}">{$detail.category}</a></span>
                                 </div>
                                 <div class="metabox">
                                     <span class="meta-i"><i class="fa fa-send" aria-hidden="true"></i>发布时间：{$detail.publish_time}</span>
                                 </div>
                                 <div class="metabox">
                                     <span class="meta-i"><i class="fa fa-jsfiddle" aria-hidden="true"></i>影片时长：{$detail.time}</span>
+                                    <span class="meta-i"><i class="fa fa-eye" aria-hidden="true"></i>访问量：{$detail.view+1}</span>
+                                    <span class="meta-i"><i class="fa fa-download" aria-hidden="true"></i>下载量：{$detail.download}</span>
                                 </div>
                                 <div class="metabox">
                                     <span class="meta-i"><i class="fa fa-tags" aria-hidden="true"></i>标签：</span>

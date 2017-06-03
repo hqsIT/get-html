@@ -74,6 +74,7 @@ class WebController extends _BaseController
             $this->error('不存在该分类');
         }
         $this->assign('category', $info);
+        $WebCategory->viewInc($info['id']);
 
         $map = ['category_id' => $info['id']];
         $this->getList($map);
@@ -104,6 +105,7 @@ class WebController extends _BaseController
         if (empty($info)) {
             $this->error('不存在该分类');
         }
+        $WebContent->viewInc($info['id']);
 
         $this->assign('detail', $info);
 
@@ -158,7 +160,7 @@ class WebController extends _BaseController
 
             $map['id'] = ['in', $ids];
         }
-        $field = ['id', 'time', 'title', 'alias', 'publish_time', 'category_id', 'img_path'];
+        $field = ['id', 'time', 'title', 'alias', 'publish_time', 'category_id', 'img_path', 'download', 'view'];
         $list = $WebContent->field($field)->where($map)->order('create_time', 'asc')->paginate(12, false, ['query' => $this->request->param()]);
         $this->assign('list', $list);
     }
