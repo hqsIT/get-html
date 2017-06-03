@@ -17,7 +17,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "topthink/framework": "^5.0"
+        "topthink/framework": "^5.0",
+        "snoopy/snoopy": "^2.0",
+        "emanueleminotto/simple-html-dom": "^1.5"
     },
     "extra": {
         "think-path": "thinkphp"

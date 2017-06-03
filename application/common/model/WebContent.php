@@ -7,6 +7,7 @@
  */
 
 namespace app\common\model;
+use think\Db;
 use think\Model;
 
 class WebContent extends Model
@@ -15,6 +16,17 @@ class WebContent extends Model
     protected $insert  = [
         'status' => 1
     ];
+
+    public function getTagsAttr($value, $data)
+    {
+        $Tag = new Tag();
+        return $Tag->getContentTag($data['id']);
+    }
+
+    public function getCategoryAttr($value, $data)
+    {
+        return Db::name('WebCategory')->where('id', $data['category_id'])->value('title');
+    }
 
     /**
      * 保存数据

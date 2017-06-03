@@ -1,0 +1,95 @@
+{extend name="base/base"}
+{block name="body"}
+<!-- CORE -->
+<div class="row">
+    <!-- SIDEBAR -->
+    <div class="col-lg-2 col-md-4 hidden-sm hidden-xs">
+        <aside class="dark-bg">
+            <article>
+                <h2 class="icon"><i class="fa fa-flash" aria-hidden="true"></i>TOP Author</h2>
+                <ul class="sidebar-links">
+                    {volist name="topCategory" id="item"}
+                    <li class="fa fa-chevron-right">
+                        <a href="{:url('category', ['category' => $item['title']])}">{$item.title}</a>
+                        <span>{$item.count}</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </article>
+            <div class="clearfix spacer"></div>
+            <article>
+                <h2 class="icon"><i class="fa fa-gears" aria-hidden="true"></i>TOP Tag</h2>
+                <ul class="sidebar-links">
+                    {volist name="topTag" id="item"}
+                    <li class="fa fa-chevron-right">
+                        <a href="{:url('index', ['tags' => $item['title']])}">{$item.title}</a>
+                        <span>{$item.count}</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </article>
+            <div class="clearfix spacer"></div>
+        </aside>
+    </div>
+    <!-- HOME MAIN POSTS -->
+    <div class="col-lg-10 col-md-8">
+        <section id="home-main">
+            <h2 class="icon"><i class="fa fa-television" aria-hidden="true"></i>当前内容：【{$detail.alias}】 {$detail.title}</h2>
+            <div class="row">
+                <!-- ARTICLES -->
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <article class="page">
+                        <div class="col-sm-4">
+                            <div class="thumbr dropshd">
+                                <a class="post-thumb" href="" data-lity="">
+                                    <img class="img-responsive" src="{$detail.big_img_path}" alt="#">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="spacer"></div>
+                            <h2 class="title main-head-title">【{$detail.alias}】 {$detail.title}</h2>
+                            <!-- PAGE INFO -->
+                            <div class="page-info">
+                                <div class="metabox">
+                                    <span class="meta-i"><i class="fa fa-amazon" aria-hidden="true"></i>作者：{$detail.category}</span>
+                                </div>
+                                <div class="metabox">
+                                    <span class="meta-i"><i class="fa fa-send" aria-hidden="true"></i>发布时间：{$detail.publish_time}</span>
+                                </div>
+                                <div class="metabox">
+                                    <span class="meta-i"><i class="fa fa-jsfiddle" aria-hidden="true"></i>影片时长：{$detail.time}</span>
+                                </div>
+                                <div class="metabox">
+                                    <span class="meta-i"><i class="fa fa-tags" aria-hidden="true"></i>标签：</span>
+                                    <ul class="footer-tags">
+                                        {volist name="detail.tags" id="item"}
+                                        <li>{$item.tag}</li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix spacer"></div>
+                        <!-- DETAILS -->
+                        <div class="video-content">
+                            <h2 class="title main-head-title">下载地址</h2>
+                            <ul class="footer-tags">
+                                {volist name="bts" id="item"}
+                                <li>
+                                    <a href="{:url('download', ['id' => $item['id'], 'detail' => $detail['alias']])}" target="_blank">下载地址{$key+1}</a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                        <div class="clearfix spacer"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{/block}
+{block name="ad"}
+{/block}
+

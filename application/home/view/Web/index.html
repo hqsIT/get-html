@@ -1,0 +1,103 @@
+{extend name="base/base"}
+{block name="body"}
+<!-- CORE -->
+<div class="row">
+    <!-- SIDEBAR -->
+    <div class="col-lg-2 col-md-4 hidden-sm hidden-xs">
+        <aside class="dark-bg">
+            <article>
+                <h2 class="icon"><i class="fa fa-flash" aria-hidden="true"></i>TOP Author</h2>
+                <ul class="sidebar-links">
+                    {volist name="topCategory" id="item"}
+                    <li class="fa fa-chevron-right">
+                        <a href="{:url('category', ['category' => $item['title']])}">{$item.title}</a>
+                        <span>{$item.count}</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </article>
+            <div class="clearfix spacer"></div>
+            <article>
+                <h2 class="icon"><i class="fa fa-gears" aria-hidden="true"></i>TOP Tag</h2>
+                <ul class="sidebar-links">
+                    {volist name="topTag" id="item"}
+                    <li class="fa fa-chevron-right">
+                        <a href="{:url('index', ['tags' => $item['title']])}">{$item.title}</a>
+                        <span>{$item.count}</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </article>
+            <div class="clearfix spacer"></div>
+        </aside>
+    </div>
+    <!-- HOME MAIN POSTS -->
+    <div class="col-lg-10 col-md-8">
+        <section id="home-main">
+            <h2 class="icon"><i class="fa fa-television" aria-hidden="true"></i>All Content</h2>
+
+            <div class="row">
+                <!-- ARTICLES -->
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <div class="row auto-clear">
+                        {volist name="list" id="item"}
+                        <article class="col-lg-3 col-md-6 col-sm-4">
+                            <!-- POST L size -->
+                            <div class="post post-medium">
+                                <div class="thumbr">
+                                    <a class="afterglow post-thumb" href="" data-lity>
+                                            <span class="play-btn-border" title="Play"><i class="fa fa-play-circle headline-round" aria-hidden="true"></i></span>
+
+                                        <div class="cactus-note ct-time font-size-1"><span>{$item.time} min</span></div>
+                                        <img class="img-responsive" src="{$item.img_path}" alt="[{$item.alias}] {$item.title}">
+                                    </a>
+                                </div>
+                                <div class="infor">
+                                    <h4>
+                                        <a class="title" href="{:url('detail', ['detail'=>$item['alias']])}" title="{$item.title}">{$item.alias}</a>
+                                        <span class="title pull-right">{$item.publish_time}</span>
+
+                                    </h4>
+                                    <p class="posts-txt" title="Posts from Channel"><i class="fa fa-credit-card-alt"></i><a href="{:url('category', ['category' => $item['category']])}">{$item.category}</a></p>
+                                    <p class="posts-txt" title="Posts from Channel"><i class="fa fa-tag"></i>
+                                        {volist name="item.tags" id="tag"}
+                                        <a href="{:url('index', ['tags' => $tag['tag']])}">{$tag.tag}</a>
+                                        {/volist}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        {/volist}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div>
+                        <ul class="pagination">
+                            {$list->render()}
+                        </ul>
+                    </div>
+
+                    <div class="clearfix spacer"></div>
+                </div>
+                <!-- RIGHT ASIDE -->
+                <div class="col-lg-3 hidden-md col-sm-12 text-center top-sidebar">
+                    <!-- SUBSCRIBE BOX -->
+                    <div class="subscribe-box">
+                        <h2 class="icon"><i class="fa fa-search" aria-hidden="true"></i>search</h2>
+                        <!-- SUBSCRIBE FIELD -->
+                        <form name="search-submit" method="get" action="" id="subscribe-submit">
+                            <fieldset class="search-fieldset">
+                                <input id="subscribe" type="text" name="search" size="12" class="search-field" placeholder="search code" value="{$Request.param.search}">
+                                <input id="subscribe" type="text" name="tags" size="12" class="search-field" placeholder="search code" value="{$Request.param.tags}">
+                                <button class="subscribe-btn" type="submit" title="Subscribe">Subscribe</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{/block}
+{block name="ad"}
+{/block}
+
