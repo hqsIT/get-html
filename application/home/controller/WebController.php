@@ -161,7 +161,7 @@ class WebController extends _BaseController
             $map['id'] = ['in', $ids];
         }
         $field = ['id', 'time', 'title', 'alias', 'publish_time', 'category_id', 'img_path', 'download', 'view'];
-        $list = $WebContent->field($field)->where($map)->order('create_time', 'asc')->paginate(12, false, ['query' => $this->request->param()]);
+        $list = $WebContent->field($field)->where($map)->order('publish_time', 'desc')->paginate(12, false, ['query' => $this->request->param()]);
         $this->assign('list', $list);
     }
 }
