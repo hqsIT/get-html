@@ -8,6 +8,7 @@
 
 namespace app\admin\controller;
 use app\common\model\Web;
+use app\common\model\WebCategory;
 use think\Cache;
 use think\Db;
 use think\Url;
@@ -116,6 +117,10 @@ class WebController extends _BaseController
         }
     }
 
+    /**
+     * 循环更新内容页
+     * @author klinson <klinson@163.com>
+     */
     public function go4()
     {
         $Web = new Web();
@@ -132,4 +137,14 @@ class WebController extends _BaseController
         echo 'success';
         return ;
     }
+
+    /**
+     * 统计分类下属数量
+     * @author klinson <klinson@163.com>
+     */
+   public function go5()
+   {
+       $WebCategory = new WebCategory();
+       $WebCategory->setCount();
+   }
 }
